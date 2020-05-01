@@ -1,6 +1,6 @@
 {
   "name": "@jcgurango/bot-engine",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple bot engine focusing heavily on simplicity + extensibility.",
   "main": "dist/index.js",
   "scripts": {
@@ -8,10 +8,18 @@
     "build": "tsc",
     "watch": "tsc --watch"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcgurango/bot-engine.git"
+  },
   "devDependencies": {
     "@types/node": "^13.13.4",
     "typescript": "^3.8.3"
-  }
+  },
+  "author": "JC Gurango <jc@jcgurango.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcgurango/bot-engine/issues"
+  },
+  "homepage": "https://github.com/jcgurango/bot-engine#readme"
 }
