@@ -1,5 +1,5 @@
 # @jcgurango/bot-engine
-A simple bot engine focusing heavily on extensibility and stateless structure so it can be run Serverless. Written in TypeScript, but developed mainly for JS use.
+A simple chatbot engine focusing heavily on extensibility and stateless structure so it can be run Serverless. Written in TypeScript, but developed mainly for JS use.
 
 Todo:
 - [ ] NLU support
