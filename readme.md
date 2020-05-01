@@ -30,14 +30,14 @@ To use the bot engine, you need two components: a channel (where messages will b
 ### Examples
 #### Simple Console Greeter Bot
 
-```
+```js
 const {
     BotEngine,
     InMemorySessionManager,
     IncomingMessageType,
     OutgoingMessageType,
     ConsoleChannel,
-} = require('./bot-engine');
+} = require('@jcgurango/bot-engine');
 
 const engine = new BotEngine(new InMemorySessionManager(), {
     id: 'default',
@@ -99,7 +99,6 @@ const engine = new BotEngine(new InMemorySessionManager(), {
 
 engine.register(new ConsoleChannel());
 engine.start();
-
 ```
 
 #### Messenger Bot Example
