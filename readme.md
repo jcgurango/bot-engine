@@ -3,7 +3,7 @@ A simple chatbot engine focusing heavily on extensibility and stateless structur
 
 Todo:
 - [ ] NLU support
-- [ ] Implement FB Messenger channel
+- [X] Implement FB Messenger channel
 - [ ] Plugin system
 
 ## Installation
