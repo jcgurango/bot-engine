@@ -1,6 +1,6 @@
 {
   "name": "@jcgurango/bot-engine",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A simple bot engine focusing heavily on simplicity + extensibility.",
   "main": "dist/index.js",
   "scripts": {

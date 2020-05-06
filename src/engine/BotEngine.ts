@@ -62,7 +62,7 @@ export default class BotEngine {
 
     async gotoStep(context: IContext, stepName: String): Promise<IStep> {
         // Find the new step.
-        const flowName = await context.session.get('currentFlow');
+        const flowName = await context.session.get('__currentFlow');
         const currentFlow = (flowName && this.flows.find(({ id }) => id === flowName))
             || (flowName === this.defaultFlow.id && this.defaultFlow);
         const newStep = currentFlow && stepName && currentFlow.steps.find(({ id }) => id === stepName);
@@ -71,11 +71,12 @@ export default class BotEngine {
             throw new Error(`Unknown step ${stepName} in ${flowName}`);
         }
 
+        await context.session.set('__stepName', stepName);
         return await this.callStep(newStep, context);
     }
 
     async startFlow(context: IContext, newFlow: IFlow, stepName?: String) {
-        await context.session.set('currentFlow', newFlow.id);
+        await context.session.set('__currentFlow', newFlow.id);
         return await this.gotoStep(context, stepName || newFlow.defaultStep);
     }
 
@@ -91,8 +92,8 @@ export default class BotEngine {
     }
 
     async endFlow(context: IContext) {
-        await context.session.set('currentFlow', null);
-        await context.session.set('stepName', null);
+        await context.session.set('__currentFlow', null);
+        await context.session.set('__stepName', null);
         return null;
     }
 
@@ -108,9 +109,9 @@ export default class BotEngine {
         // Retrieve the session for the given ID.
         const session = await this.session.getSessionStore(chatId);
 
-        const flowName = await session.get('currentFlow');
+        const flowName = await session.get('__currentFlow');
         const currentFlow = flowName && this.findFlowById(flowName);
-        const stepName = await session.get('stepName') || (currentFlow && currentFlow.defaultStep);
+        const stepName = await session.get('__stepName') || (currentFlow && currentFlow.defaultStep);
         const currentStep = currentFlow && stepName && currentFlow.steps.find(({ id }) => id === stepName);
 
         // Create a context object.

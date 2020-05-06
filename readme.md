@@ -4,6 +4,7 @@ A simple chatbot engine focusing heavily on extensibility and stateless structur
 Todo:
 - [ ] NLU support
 - [ ] Implement FB Messenger channel
+- [ ] Plugin system
 
 ## Installation
 Install via npm:
@@ -26,6 +27,9 @@ To use the bot engine, you need two components: a channel (where messages will b
 
 - **InMemorySessionManager**, which will store sessions in memory, and
 - **ConsoleChannel**, which allows you to use the console as a way to interact with the bot.
+
+## Connectors
+- [@jcgurango/bot-engine-channel-messenger](https://github.com/jcgurango/bot-engine-channel-messenger)
 
 ### Examples
 #### Simple Console Greeter Bot
