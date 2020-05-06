@@ -1,4 +1,4 @@
-# @jcgurango/bot-engine
+# @bot-engine/core
 A simple chatbot engine focusing heavily on extensibility and stateless structure so it can be run Serverless. Written in TypeScript, but developed mainly for JS use.
 
 Todo:
@@ -10,7 +10,7 @@ Todo:
 Install via npm:
 
 ```
-npm install --save @jcgurango/bot-engine
+npm install --save @bot-engine/core
 ```
 
 Install from source:
@@ -29,7 +29,7 @@ To use the bot engine, you need two components: a channel (where messages will b
 - **ConsoleChannel**, which allows you to use the console as a way to interact with the bot.
 
 ## Connectors
-- [@jcgurango/bot-engine-channel-messenger](https://github.com/jcgurango/bot-engine-channel-messenger)
+- [@bot-engine/channel-messenger](https://github.com/jcgurango/bot-engine-channel-messenger)
 
 ### Examples
 #### Simple Console Greeter Bot
@@ -41,7 +41,7 @@ const {
     IncomingMessageType,
     OutgoingMessageType,
     ConsoleChannel,
-} = require('@jcgurango/bot-engine');
+} = require('@bot-engine/core');
 
 const engine = new BotEngine(new InMemorySessionManager(), {
     id: 'default',
