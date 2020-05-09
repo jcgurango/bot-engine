@@ -97,12 +97,12 @@ export default class BotEngine {
         return null;
     }
 
-    findFlowById(id: String) {
-        if (id === this.defaultFlow.id) {
+    findFlowById(flowId: String) {
+        if (flowId === this.defaultFlow.id) {
             return this.defaultFlow;
         }
 
-        return this.flows.find(({ id }) => id === id);
+        return this.flows.find(({ id }) => id === flowId);
     }
 
     async processMessage(chatId: String, message: IIncomingMessage): Promise<IStep | null> {
@@ -135,8 +135,10 @@ export default class BotEngine {
         // Retrieve the current flow for the session.
         if (context.currentFlow) {
             if (context.currentStep) {
+                const matcher = context.currentStep.responseMatcher || this.responseMatcher;
+
                 // Issue callbacks based on matching.
-                const response = this.responseMatcher(message, context.currentStep, context);
+                const response = matcher(message, context.currentStep, context);
 
                 if (response) {
                     return response.callback(context);

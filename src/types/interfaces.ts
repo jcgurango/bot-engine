@@ -13,7 +13,7 @@ export interface ISessionStore {
 export interface IIncomingMessage {
     type: IncomingMessageType;
     payload?: any;
-    text: String;
+    text?: String;
     metadata?: any;
 }
 
@@ -34,7 +34,7 @@ export interface IContext {
     currentFlow?: IFlow;
     currentStep?: IStep;
     gotoStep(stepName: String): Promise<IStep | null>;
-    startFlow(flowName: String): Promise<IStep | null>;
+    startFlow(flowName: String, stepName?: String): Promise<IStep | null>;
     endFlow(): Promise<IStep | null>;
     session: ISessionStore;
 }
@@ -43,7 +43,16 @@ export interface IStep {
     id: String;
     messages: IOutgoingMessage[];
     responses: (IIncomingMessage & IHasCallback)[];
-    callback: (context: IContext) => IStep;
+    responseMatcher?: (message: IIncomingMessage, step: IStep, context: IContext) => (IIncomingMessage & IHasCallback);
+    callback?: ((context: IContext) => (IStepPatch | IStep | null | Promise<IStepPatch | IStep | null>)) | null;
+}
+
+export interface IStepPatch {
+    id?: String;
+    messages?: IOutgoingMessage[];
+    responses?: (IIncomingMessage & IHasCallback)[];
+    responseMatcher?: (message: IIncomingMessage, step: IStep, context: IContext) => (IIncomingMessage & IHasCallback);
+    callback?: ((context: IContext) => (IStepPatch | IStep | null | Promise<IStepPatch | IStep | null>)) | null;
 }
 
 export interface IFlow {
