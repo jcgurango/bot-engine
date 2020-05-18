@@ -1,6 +1,6 @@
 {
   "name": "@bot-engine/core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple bot engine focusing heavily on simplicity + extensibility.",
   "main": "dist/index.js",
   "scripts": {
