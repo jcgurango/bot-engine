@@ -44,15 +44,7 @@ export interface IStep {
     messages: IOutgoingMessage[];
     responses: (IIncomingMessage & IHasCallback)[];
     responseMatcher?: (message: IIncomingMessage, step: IStep, context: IContext) => (IIncomingMessage & IHasCallback);
-    callback?: ((context: IContext) => (IStepPatch | IStep | null | Promise<IStepPatch | IStep | null>)) | null;
-}
-
-export interface IStepPatch {
-    id?: String;
-    messages?: IOutgoingMessage[];
-    responses?: (IIncomingMessage & IHasCallback)[];
-    responseMatcher?: (message: IIncomingMessage, step: IStep, context: IContext) => (IIncomingMessage & IHasCallback);
-    callback?: ((context: IContext) => (IStepPatch | IStep | null | Promise<IStepPatch | IStep | null>)) | null;
+    callback?: ((context: IContext) => Promise<Partial<IStep>> | Partial<IStep> | null) | null;
 }
 
 export interface IFlow {
