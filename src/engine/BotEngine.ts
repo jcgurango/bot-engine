@@ -141,7 +141,12 @@ export default class BotEngine {
                 const response = matcher(message, context.currentStep, context);
 
                 if (response) {
-                    return response.callback(context);
+                    const next = await response.callback(context);
+
+                    return {
+                        ...context.currentStep,
+                        ...next,
+                    };
                 } else {
                     // Didn't understand this response.
                     return {

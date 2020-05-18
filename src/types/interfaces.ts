@@ -18,7 +18,7 @@ export interface IIncomingMessage {
 }
 
 export interface IHasCallback {
-    callback(context: IContext): Promise<IStep | null>;
+    callback(context: IContext): Promise<Partial<IStep> | null>;
 }
 
 export interface IOutgoingMessage {
