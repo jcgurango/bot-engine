@@ -117,6 +117,7 @@ export default class BotEngine {
         // Create a context object.
         const context: IContext = {
             engine: this,
+            chatId,
             currentMessage: message,
             flowName,
             stepName,

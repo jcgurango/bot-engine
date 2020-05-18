@@ -29,6 +29,7 @@ export interface IOutgoingMessage {
 export interface IContext {
     engine: BotEngine;
     currentMessage: IIncomingMessage;
+    chatId: String;
     flowName: String;
     stepName: String;
     currentFlow?: IFlow;
